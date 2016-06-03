@@ -1,0 +1,113 @@
+
+<% if current_user == nil %>
+  <%# redirect_to "/users/sign_in" :notice => "You have to be signed in to view that page" %>
+<!-- Showing an error.  Expecting keyword end for the notice `` -->
+  <!-- Add a sign in/sign up (from users/sign_in) -->
+
+  <% else %>
+
+<div class="page-header">
+  <h2><%= @restaurant.name %></h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @restaurant.name %></dd>
+
+      <dt>Address</dt>
+      <dd><%= @restaurant.address %></dd>
+
+      <dt>Neighborhood</dt>
+      <dd><%= @restaurant.neighborhood %></dd>
+
+    </dl>
+
+<!-- Date visited, Appetizer, Entree, Dessert, Drinks, Overall rating (or star rating for each) -->
+
+      <form action="/create_review" method="post">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+        <!-- Label and input for Date visited -->
+        <div class="form-group">
+          <label for="date" class="control-label">
+            Date visited:
+          </label>
+
+          <input type="text" id="date" name="date" placeholder="Date Visited (ex. 12/31/16)" class="form-control">
+          </input>
+        </div>
+
+        <!-- Label and input for Appetizer -->
+        <div class="form-group">
+          <label for="appetizer" class="control-label">
+            Appetizer/Starter
+          </label>
+
+          <input type="text" id="appetizer" name="appetizer" placeholder="Appetizer/Starter" class="form-control">
+          </input>
+        </div>
+
+        <!-- Label and input for Entree -->
+        <div class="form-group">
+          <label for="entree" class="control-label">
+            Entree
+          </label>
+
+          <input type="text" id="entree" name="entree" placeholder="Entree (ex. 12/31/16)" class="form-control">
+          </input>
+        </div>
+
+        <!-- Label and input for Dessert -->
+        <div class="form-group">
+          <label for="dessert" class="control-label">
+            Dessert
+          </label>
+
+          <input type="text" id="dessert" name="dessert" placeholder="Dessert" class="form-control">
+          </input>
+        </div>
+
+        <!-- Label and input for Overall rating -->
+        <div class="form-group">
+          <label for="rating" class="control-label">
+            Overall Rating
+          </label>
+
+          <input type="integer" id="rating" name="rating" placeholder="Rating (1 - 5)" class="form-control">
+          </input>
+        </div>
+
+        <!-- Label and input for Notes -->
+        <div class="form-group">
+          <label for="notes" class="control-label">
+            Notes
+          </label>
+
+          <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"></textarea>
+        </div>
+
+        <button class="btn btn-success">
+          Create Comment
+        </button>
+
+      </form>
+
+      <hr>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/restaurants" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/restaurants/<%= @restaurant.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_restaurant/<%= @restaurant.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
+<% end %>
