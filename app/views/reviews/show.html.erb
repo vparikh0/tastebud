@@ -3,29 +3,53 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <dl class="dl-horizontal">
-      <dt>Restaurant</dt>
-      <dd><%= @review.restaurant_id %></dd>
+      <dt>Restaurant Name</dt>
+      <dd><%= @review.restaurant.name %></dd>
+
+      <dt>Restaurant Neighborhood</dt>
+      <dd><%= @review.restaurant.neighborhood %></dd>
 
       <dt>User</dt>
       <dd><%= @review.user_id %></dd>
 
+      <dt>Date Visited</dt>
+      <dd><%= @review.date %></dd>
+
+      <dt>Appetizer</dt>
+      <dd><%= @review.appetizer %></dd>
+
+      <dt>Entree</dt>
+      <dd><%= @review.entree %></dd>
+
+      <dt>Dessert</dt>
+      <dd><%= @review.dessert %></dd>
+
       <dt>Notes</dt>
       <dd><%= @review.notes %></dd>
+
+      <!-- <dt>Overall Rating</dt>
+      <dd><%# @review.rating %></dd> -->
 
     </dl>
 
     <div class="btn-group btn-group-justified">
       <a href="/reviews" class="btn btn-primary">
-        Back
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
       </a>
       <a href="/reviews/<%= @review.id %>/edit" class="btn btn-warning">
-        Edit
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
       </a>
       <a href="/delete_review/<%= @review.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
       </a>
     </div>
   </div>
+
+  <div class="col-md-4">
+    <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<%= @review.restaurant.name %>,<%= @review.restaurant.neighborhood %>&key=AIzaSyBOcjx2-pkCnJam_fhWonH9uWmeMr-bM20" allowfullscreen>
+    </iframe>
+  </div>
+
 </div>

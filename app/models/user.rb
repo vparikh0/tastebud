@@ -12,8 +12,6 @@ class User < ActiveRecord::Base
 
   has_many :restaurants, :through => :reviews
 
-  
-
   def login=(login)
     @login = login
   end

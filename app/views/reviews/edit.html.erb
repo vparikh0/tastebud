@@ -18,22 +18,59 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <!-- <label for="user_id" class="control-label">
+          User
+        </label> -->
+
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @review.user_id %>">
+      </div>
+
       <!-- Label and input for restaurant_id -->
       <div class="form-group">
-        <label for="restaurant_id" class="control-label">
-          Restaurant
+        <label for="date" class="control-label">
+          Date Visited
         </label>
 
+        <input type="text" id="date" name="date" placeholder="Date (ex. 12/31/16)" class="form-control" value="<%= @review.date %>">
+      </div>
+
+      <!-- Label and input for restaurant_name -->
+      <div class="form-group">
+        <label for="restaurant_id" class="control-label">
+          Restaurant Name
+        </label>
+
+        <p><%# @review.restaurant.name %></p>
         <input type="text" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= @review.restaurant_id %>">
       </div>
 
-      <!-- Label and input for user_id -->
+      <!-- Label and input for appetizer -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
+        <label for="appetizer" class="control-label">
+          Appetizer
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @review.user_id %>">
+        <input type="text" id="appetizer" name="appetizer" placeholder="Appetizer" class="form-control" value="<%= @review.appetizer %>">
+      </div>
+
+      <!-- Label and input for entree -->
+      <div class="form-group">
+        <label for="entree" class="control-label">
+          Entree
+        </label>
+
+        <input type="text" id="entree" name="entree" placeholder="Entree" class="form-control" value="<%= @review.entree %>">
+      </div>
+
+      <!-- Label and input for dessert -->
+      <div class="form-group">
+        <label for="dessert" class="control-label">
+          Dessert
+        </label>
+
+        <input type="text" id="dessert" name="dessert" placeholder="Dessert" class="form-control" value="<%= @review.dessert %>">
       </div>
 
       <!-- Label and input for notes -->
@@ -42,8 +79,23 @@
           Notes
         </label>
 
-        <textarea id="notes" name="notes" placeholder="Comments" class="form-control" rows="3"><%= @restaurant.notes %></textarea>
+        <textarea id="notes" name="notes" placeholder="Comments" class="form-control" rows="3"><%= @review.notes %></textarea>
       </div>
+
+      <!-- Label and input for Overall rating -->
+      <!-- <div class="form-group">
+        <label for="rating" class="control-label">
+          Overall Rating
+        </label>
+
+        <select class="form-control" name="rating" id="rating">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div> -->
 
       <button class="btn btn-warning">
         Update Review

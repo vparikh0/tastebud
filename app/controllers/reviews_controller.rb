@@ -15,13 +15,13 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @review.restaurant_id = params[:restaurant_id]
     @review.user_id = params[:user_id]
-    @review.notes = params[:notes]
 
     @review.date = params[:date]
     @review.appetizer = params[:appetizer]
     @review.entree = params[:entree]
     @review.dessert = params[:dessert]
-    @review.rating = params[:rating]
+    @review.notes = params[:notes]
+    # @review.rating = params[:rating]
 
     if @review.save
       redirect_to "/reviews", :notice => "Review created successfully."
@@ -38,10 +38,18 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     @review.restaurant_id = params[:restaurant_id]
+    # @review.restaurant_name = params[:restaurant_name]
     @review.user_id = params[:user_id]
 
+    @review.date = params[:date]
+    @review.appetizer = params[:appetizer]
+    @review.entree = params[:entree]
+    @review.dessert = params[:dessert]
+    @review.notes = params[:notes]
+    # @review.rating = params[:rating]
+
     if @review.save
-      redirect_to "/reviews", :notice => "Review updated successfully."
+      redirect_to "/reviews/#{@review.id}", :notice => "Review updated successfully."
     else
       render 'edit'
     end
