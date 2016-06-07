@@ -1,14 +1,25 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.all
+    @q = Restaurant.ransack(params[:q])
+    @restaurants = @q.result
+
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
   end
 
-  def new
+  def new_search
+    @q = Restaurant.ransack(params[:q])
     @restaurant = Restaurant.new
+  end
+
+  def new
+    @q = Restaurant.ransack(params[:q])
+    @restaurant = Restaurant.new
+    @restaurant.name = params[:name]
+    @restaurant.address = params[:address]
+    @restaurant.neighborhood = params[:neighborhood]
   end
 
   def create
@@ -18,7 +29,7 @@ class RestaurantsController < ApplicationController
     @restaurant.neighborhood = params[:neighborhood]
 
     if @restaurant.save
-      redirect_to "/restaurants", :notice => "Restaurant created successfully."
+      redirect_to "/restaurants/#{@restuarant.id}", :notice => "Restaurant created successfully."
     else
       render 'new'
     end

@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   root "restaurants#index"
 
   # Routes for the Review resource:
+
   # CREATE
-  get "/reviews/new", :controller => "reviews", :action => "new"
+  # get "/reviews/new", :controller => "reviews", :action => "new"
+  get "/reviews_new/:id", :controller => "reviews", :action => "new"
   post "/create_review", :controller => "reviews", :action => "create"
 
   # READ
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
 
   # Routes for the Restaurant resource:
   # CREATE
+  get "/restaurants/new_search", :controller => "restaurants", :action => "new_search"
   get "/restaurants/new", :controller => "restaurants", :action => "new"
   post "/create_restaurant", :controller => "restaurants", :action => "create"
 

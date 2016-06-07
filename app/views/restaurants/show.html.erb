@@ -1,42 +1,43 @@
 
-<% if current_user == nil %>
-  <%# redirect_to "/users/sign_in" :notice => "You have to be signed in to view that page" %>
-<!-- Showing an error.  Expecting keyword end for the notice `` -->
-  <!-- Add a sign in/sign up (from users/sign_in) -->
-
-  <% else %>
-
 <div class="page-header">
   <h2><%= @restaurant.name %></h2>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @restaurant.name %></dd>
+    <div class="col-md-6">
+      <dl class="dl-horizontal">
+        <dt>Restaurant Name</dt>
+        <dd><%= @restaurant.name %></dd>
 
-      <dt>Address</dt>
-      <dd><%= @restaurant.address %></dd>
+        <dt>Address</dt>
+        <dd><%= @restaurant.address %></dd>
 
-      <dt>Neighborhood</dt>
-      <dd><%= @restaurant.neighborhood %></dd>
+        <dt>Neighborhood</dt>
+        <dd><%= @restaurant.neighborhood %></dd>
+      </dl>
 
-    </dl>
+      <div class="btn-group btn-group-justified">
+        <a href="/restaurants" class="btn btn-primary">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </a>
+        <a href="/restaurants/<%= @restaurant.id %>/edit" class="btn btn-warning">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </a>
+        <a href="/delete_restaurant/<%= @restaurant.id %>" class="btn btn-danger" rel="nofollow">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </a>
+      </div>
+      <!-- Add reviews from others? -->
 
-  <hr>
+      <div class="btn btn-group-justified">
+        <a href="/reviews_new/<%= @restaurant.id %>" class="btn btn-lg btn-success">Add New Review</a>
+      </div>
+    </div>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/restaurants" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/restaurants/<%= @restaurant.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_restaurant/<%= @restaurant.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+    <div class="col-md-6">
+      <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<%= @restaurant.name %>,<%= @restaurant.neighborhood %>&key=AIzaSyBOcjx2-pkCnJam_fhWonH9uWmeMr-bM20" allowfullscreen>
+      </iframe>
     </div>
   </div>
 </div>
-<% end %>

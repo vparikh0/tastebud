@@ -8,19 +8,13 @@
 <% end %>
 <% end %>
 
-<% name = params[:name] %>
-
 <div class="row">
   <div class="col-md-12">
-    <h1><%= name.titleize %></h1>
+    <h1>
+      Search a Restaurant by Name
+    </h1>
 
-    <div class="col-md-6">
-
-<!-- Pull info from the google maps api?  JSON?  -->
-
-      <h3>Add Restaurant</h3>
-
-    <form action="/create_restaurant" method="post">
+    <form action="/restaurants/new" method="get">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -52,16 +46,10 @@
       </div>
 
       <button class="btn btn-success">
-        Create Restaurant
+        Search
       </button>
       or
       <a href="/restaurants">Cancel</a>
     </form>
-  </div>
-
-    <div class="col-md-6">
-      <iframe width="450" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<%= params[:name] %>, <%= params[:neighborhood] %>&key=AIzaSyBOcjx2-pkCnJam_fhWonH9uWmeMr-bM20" allowfullscreen>
-      </iframe>
-    </div>
   </div>
 </div>

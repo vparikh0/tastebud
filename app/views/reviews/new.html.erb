@@ -9,7 +9,8 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Review</h3>
+  <h3>Add Your Review for: </h3>
+  <h1><%= Restaurant.find(params[:id]).name %></h1>
 </div>
 
 <!-- Date visited, Appetizer, Entree, Dessert, Drinks, Overall rating (or star rating for each) -->
@@ -19,95 +20,82 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for user_id; Change it to hidden! -->
-      <div class="form-group">
-        <!-- <label for="user_id" class="control-label">
-        User
-      </label> -->
-
+      <!-- Label and input for user_id; Changed to hidden! -->
       <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+
+      <!-- Label and input for restaurant_id -->
+        <input type="hidden" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= Restaurant.find(params[:id]).name %>">
+
+      <!-- Label and input for Date visited -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date visited:
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date Visited (ex. 12/31/16)" class="form-control">
+        </input>
+      </div>
+
+      <!-- Label and input for Appetizer -->
+      <div class="form-group">
+        <label for="appetizer" class="control-label">
+          Appetizer/Starter
+        </label>
+
+        <input type="text" id="appetizer" name="appetizer" placeholder="Appetizer/Starter" class="form-control">
+        </input>
+      </div>
+
+      <!-- Label and input for Entree -->
+      <div class="form-group">
+        <label for="entree" class="control-label">
+          Entree
+        </label>
+
+        <input type="text" id="entree" name="entree" placeholder="Entree" class="form-control">
+        </input>
     </div>
 
-    <!-- Label and input for Date visited -->
+    <!-- Label and input for Dessert -->
     <div class="form-group">
-      <label for="date" class="control-label">
-        Date visited:
+      <label for="dessert" class="control-label">
+        Dessert
       </label>
 
-      <input type="text" id="date" name="date" placeholder="Date Visited (ex. 12/31/16)" class="form-control">
+      <input type="text" id="dessert" name="dessert" placeholder="Dessert" class="form-control">
     </input>
+    </div>
+
+    <!-- Label and input for Overall rating -->
+    <div class="form-group">
+      <label for="rating" class="control-label">
+        Overall Rating
+      </label>
+
+      <select class="form-control" name="rating">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+
+    </div>
+
+    <!-- Label and input for Notes -->
+    <div class="form-group">
+      <label for="notes" class="control-label">
+        Notes
+      </label>
+
+      <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"></textarea>
+    </div>
+
+    <button class="btn btn-success">
+      Create Review
+    </button>
+    or
+    <a href="/reviews">Cancel</a>
+    </form>
   </div>
-
-  <!-- Label and input for restaurant_id -->
-  <div class="form-group">
-    <label for="restaurant_id" class="control-label">
-      Restaurant
-    </label>
-
-    <input type="text" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= @review.restaurant_id %>">
-  </div>
-
-
-  <!-- Label and input for Appetizer -->
-  <div class="form-group">
-    <label for="appetizer" class="control-label">
-      Appetizer/Starter
-    </label>
-
-    <input type="text" id="appetizer" name="appetizer" placeholder="Appetizer/Starter" class="form-control">
-  </input>
-</div>
-
-<!-- Label and input for Entree -->
-<div class="form-group">
-  <label for="entree" class="control-label">
-    Entree
-  </label>
-
-  <input type="text" id="entree" name="entree" placeholder="Entree" class="form-control">
-</input>
-</div>
-
-<!-- Label and input for Dessert -->
-<div class="form-group">
-  <label for="dessert" class="control-label">
-    Dessert
-  </label>
-
-  <input type="text" id="dessert" name="dessert" placeholder="Dessert" class="form-control">
-</input>
-</div>
-
-<!-- Label and input for Overall rating -->
-<div class="form-group">
-  <label for="rating" class="control-label">
-    Overall Rating
-  </label>
-
-  <select class="form-control" name="rating">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select>
-  
-</div>
-
-<!-- Label and input for Notes -->
-<div class="form-group">
-  <label for="notes" class="control-label">
-    Notes
-  </label>
-
-  <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"></textarea>
-</div>
-
-<button class="btn btn-success">
-  Create Review
-</button>
-or
-<a href="/reviews">Cancel</a>
-</form>
-</div>
 </div>

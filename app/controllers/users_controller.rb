@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @restaurants = Restaurant.all
     @reviews = Review.all
-
   end
 
   # def street_to_weather

@@ -9,7 +9,8 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-  end
+    @restaurant_id = params[:id]
+    end
 
   def create
     @review = Review.new
@@ -24,7 +25,7 @@ class ReviewsController < ApplicationController
     # @review.rating = params[:rating]
 
     if @review.save
-      redirect_to "/reviews", :notice => "Review created successfully."
+      redirect_to "/restaurants/:id", :notice => "Review created successfully."
     else
       render 'new'
     end
