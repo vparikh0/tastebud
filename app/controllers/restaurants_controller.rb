@@ -29,7 +29,7 @@ class RestaurantsController < ApplicationController
     @restaurant.neighborhood = params[:neighborhood]
 
     if @restaurant.save
-      redirect_to "/restaurants/#{@restuarant.id}", :notice => "Restaurant created successfully."
+      redirect_to "/restaurants/#{@restaurant.id}", :notice => "Restaurant created successfully."
     else
       render 'new'
     end

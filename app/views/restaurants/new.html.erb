@@ -8,11 +8,11 @@
 <% end %>
 <% end %>
 
-<% name = params[:name] %>
+<% name = params[:name].titleize %>
 
 <div class="row">
   <div class="col-md-12">
-    <h1><%= name.titleize %></h1>
+    <h1><%= name %></h1>
 
     <div class="col-md-6">
 
@@ -30,7 +30,7 @@
           Name
         </label>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%=  %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= name %>">
       </div>
 
       <!-- Label and input for address -->

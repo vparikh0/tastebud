@@ -19,7 +19,7 @@
       <tr>
         <td><%= review.user_id %></td>
         <td><%= review.restaurant.name %></td>
-        <td><%= review.notes %></td>
+        <td><%= truncate(review.notes) %></td>
         <td>
           <a href="/reviews/<%= review.id %>" class="btn btn-primary">
             <i class="fa fa-search-plus" aria-hidden="true"></i>

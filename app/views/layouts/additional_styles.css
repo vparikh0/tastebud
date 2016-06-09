@@ -1,0 +1,8 @@
+/*Addtional Styles */
+
+.index_header_image {
+  background: url("Images\Restaurant-Menu-Theme-Backgrounds-800x600.jpg") no-repeat center center;
+  background-size: cover;
+  color: white;
+
+}

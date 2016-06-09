@@ -24,7 +24,7 @@
       <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
 
       <!-- Label and input for restaurant_id -->
-        <input type="hidden" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= Restaurant.find(params[:id]).name %>">
+        <input type="hidden" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= params[:id] %>">
 
       <!-- Label and input for Date visited -->
       <div class="form-group">

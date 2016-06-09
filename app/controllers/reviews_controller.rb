@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     # @review.rating = params[:rating]
 
     if @review.save
-      redirect_to "/restaurants/:id", :notice => "Review created successfully."
+      redirect_to "/restaurants/#{:id}", :notice => "Review created successfully."
     else
       render 'new'
     end
