@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @restaurant_id = params[:id]
-    end
+  end
 
   def create
     @review = Review.new

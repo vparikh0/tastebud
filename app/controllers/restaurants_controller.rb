@@ -1,3 +1,5 @@
+require "open-uri"
+
 class RestaurantsController < ApplicationController
   def index
     @q = Restaurant.ransack(params[:q])
@@ -20,6 +22,16 @@ class RestaurantsController < ApplicationController
     @restaurant.name = params[:name]
     @restaurant.address = params[:address]
     @restaurant.neighborhood = params[:neighborhood]
+
+    # Read restaurant info from Name search
+    # url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{@restaurant.name}&type=restaurant&key=AIzaSyBOcjx2-pkCnJam_fhWonH9uWmeMr-bM20"
+    #
+    # parsed_data_map = JSON.parse(open(url).read)
+    #
+    # @latitude = parsed_data_map["results"][0]["geometry"]["location"]["lat"]
+    #
+    # @longitude = parsed_data_map["results"][0]["geometry"]["location"]["lng"]
+
   end
 
   def create
